@@ -1,5 +1,3 @@
-
-
 """
 SweatCheck - Weather AI API
 A weather API that provides human-friendly advice based on weather data.
@@ -15,6 +13,11 @@ from datetime import datetime
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+
+from dotenv import load_dotenv
+
+# Load variables from .env file
+load_dotenv()       # ← This reads the .env file
 
 # HTTP client for calling OpenWeatherMap
 import httpx
@@ -449,4 +452,4 @@ async def get_weather_advice(
 # ---------- If Running Directly ----------
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000, reload=True)
+    uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)
