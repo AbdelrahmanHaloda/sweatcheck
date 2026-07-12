@@ -3,25 +3,26 @@ SweatCheck - Weather AI API
 A weather API that provides human-friendly advice based on weather data.
 """
 
+import logging
 import os
 import time
-import logging
-from typing import Optional, List
 from datetime import datetime
+from typing import Dict
+
+# HTTP client for calling OpenWeatherMap
+import httpx
+
+# Load environment variables
+from dotenv import load_dotenv
 
 # FastAPI imports
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import Dict
-
-from dotenv import load_dotenv
 
 # Load variables from .env file
 load_dotenv()       # ← This reads the .env file
 
-# HTTP client for calling OpenWeatherMap
-import httpx
 
 # ---------- Logging ----------
 logging.basicConfig(level=logging.INFO)
